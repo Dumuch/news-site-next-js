@@ -24,6 +24,8 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
     "no-console": 1,
     "no-trailing-spaces": 1,
     "prettier/prettier": [
