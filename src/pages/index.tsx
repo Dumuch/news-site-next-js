@@ -1,26 +1,13 @@
 import { NextPageWithLayout } from '@/types/Pages.types';
 import { InferGetStaticPropsType } from 'next';
-import Link from 'next/link';
-import { RoutesList } from '@/RoutesList';
 import { getStaticProps } from 'next/dist/build/webpack/loaders/next-route-loader/templates/pages';
 import { UseServerStores } from '@/store/useServerStores';
 import { ReactElement } from 'react';
 import DefaultLayout from '@/layouts/default';
+import { HomePage } from '@/components/pages/home';
 
 const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({ articles }) => {
-    return (
-        <main>
-            <ul>
-                {articles?.map((article) => {
-                    return (
-                        <li key={article.id}>
-                            <Link href={`${RoutesList.articles}/${article.id}`}>{article.title}</Link>
-                        </li>
-                    );
-                })}
-            </ul>
-        </main>
-    );
+    return <HomePage articles={articles} />;
 };
 
 export async function getStaticProps() {

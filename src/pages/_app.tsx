@@ -5,6 +5,7 @@ import { RootStore } from '../store';
 import { removeDevTools } from '@/utils/removeDevTools';
 import NextNProgress from 'nextjs-progressbar';
 import StoreProviderClient from '@/store/StoreProviderClient';
+import '@/assets/styles/globals.scss';
 
 type NextPageWithLayout = NextPage & {
     getLayout?: (page: ReactElement) => ReactNode;
@@ -22,7 +23,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     return (
         <>
             <StoreProviderClient store={rootStore}>
-                <NextNProgress options={{ showSpinner: false }} />
+                <NextNProgress options={{ showSpinner: false }} color="var(--color-primary)" />
                 {getLayout(<Component {...pageProps} />)}
             </StoreProviderClient>
         </>

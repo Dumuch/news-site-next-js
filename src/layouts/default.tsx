@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
+import Header from '@/layouts/header';
+import Footer from '@/layouts/footer';
 
 interface Props {
     children?: ReactNode;
@@ -11,9 +13,13 @@ const DefaultLayout: FC<Props> = ({ children, title }) => {
         <>
             <Head>
                 <title>{title}</title>
+                <meta charSet="utf-8" />
+                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
             </Head>
-            <div>
+            <div className={'wrapper-page'}>
+                <Header />
                 <main>{children}</main>
+                <Footer />
             </div>
         </>
     );
