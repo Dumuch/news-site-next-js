@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 const isActiveLink = (router, currentRoute) => {
     return router.route === currentRoute ? 'active' : '';
-}
+};
 const Header = () => {
     const router = useRouter();
 
@@ -40,11 +40,17 @@ const Header = () => {
                         <span className="navbar-toggle-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
-                        <div className="navbar-nav mr-auto py-0">
-                            <Link className={`nav-item nav-link ${isActiveLink(router, RoutesList.home)}`} href={RoutesList.home}>
+                        <div className="navbar-nav me-auto py-0">
+                            <Link
+                                className={`nav-item nav-link ${isActiveLink(router, RoutesList.home)}`}
+                                href={RoutesList.home}
+                            >
                                 Home
                             </Link>
-                            <Link className={`nav-item nav-link ${isActiveLink(router, RoutesList.articles)}`} href={RoutesList.articles}>
+                            <Link
+                                className={`nav-item nav-link ${isActiveLink(router, RoutesList.articles)}`}
+                                href={RoutesList.articles}
+                            >
                                 Articles
                             </Link>
                         </div>
@@ -52,7 +58,7 @@ const Header = () => {
                             <input type="text" className="form-control border-0" placeholder="Keyword" />
                             <div className="input-group-append">
                                 <button className="input-group-text bg-primary text-dark border-0 px-3 h-100">
-                                     <FontAwesomeIcon icon={faSearch} />
+                                    <FontAwesomeIcon icon={faSearch} />
                                 </button>
                             </div>
                         </div>

@@ -4,9 +4,9 @@ import { ReactElement } from 'react';
 import DefaultLayout from '@/layouts/default';
 import { InferGetStaticPropsType } from 'next';
 
-const Articles: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ()  => {
+const Articles: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = () => {
     return <>Все статьи</>;
-}
+};
 
 Articles.getLayout = function getLayout(page: ReactElement) {
     return <DefaultLayout title={'Articles'}>{page}</DefaultLayout>;

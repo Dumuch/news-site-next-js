@@ -7,6 +7,14 @@ export interface Article {
     createdAt: string;
     updatedAt: string;
     deletedAt: string | null;
+
+    articlePhotos: ArticlePhoto[] | null;
+}
+
+export interface ArticlePhoto {
+    id: string;
+    name: string;
+    path: string;
 }
 
 export interface ArticleList extends Sorted, Filtered {}

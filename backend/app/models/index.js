@@ -18,12 +18,12 @@ for (const modelDefiner of modelDefiners) {
     modelDefiner(sequelize);
 }
 
-// Relations
 const {
     article,
     articlePhoto,
 } = sequelize.models;
 
-article.hasMany(articlePhoto, { foreignKey: { allowNull: false } });
+article.hasMany(articlePhoto);
+articlePhoto.belongsTo(article);
 
 module.exports = sequelize;

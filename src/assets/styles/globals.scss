@@ -19,9 +19,21 @@ $border-color: #E4E7ED;
 
 $grid-gutter-width: 1rem;
 @import "bootstrap/scss/bootstrap";
+@import "primereact/resources/primereact";
+
+@import "mixins";
+@import "_badge";
 
 :root {
   --color-primary: #{$primary};
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 h1,

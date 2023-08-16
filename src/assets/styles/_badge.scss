@@ -1,0 +1,8 @@
+.badge {
+  @include hover-opacity;
+
+  &-primary {
+    color: #212529;
+    background-color: $primary;
+  }
+}

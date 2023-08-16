@@ -1,4 +1,4 @@
-const { models: { article } } = require('../models');
+const { models: { article, articlePhoto } } = require('../models');
 const { Op } = require('sequelize');
 
 
@@ -25,11 +25,17 @@ class ArticleService {
 
     static async getPopular() {
         const options = {
+            include: [
+                {
+                    attributes: ['id', 'path', 'name'],
+                    model: articlePhoto,
+                    limit: 1
+                }
+            ],
             limit: 10,
             order: [['createdAt', 'desc']]
         }
         return article.findAll(options);
-
     }
 
 
