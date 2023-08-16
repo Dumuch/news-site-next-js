@@ -2,14 +2,9 @@ import styles from './previewArticle.module.scss';
 import Image from 'next/image';
 import { FC, useMemo } from 'react';
 import { PreviewArticleProps } from './previewArticle.types';
-import { ArticlePhoto } from '@/models/api/article';
-
-const imagePath = (photos: ArticlePhoto[] | null) => {
-    if (photos && photos[0]) {
-        return `/assets/images/${photos[0].path}`;
-    }
-    return '/';
-};
+import Link from 'next/link';
+import { RoutesList } from '@/RoutesList';
+import { getFirstImagePath } from '@/utils/helpers';
 
 export const PreviewArticle: FC<PreviewArticleProps> = (article) => {
     const memoComponent = useMemo(() => {
@@ -17,7 +12,7 @@ export const PreviewArticle: FC<PreviewArticleProps> = (article) => {
             <div className={`position-relative overflow-hidden m-2 ${styles.previewArticle}`}>
                 <Image
                     className="img-fluid h-100 object-fit-cover"
-                    src={imagePath(article.articlePhotos)}
+                    src={getFirstImagePath(article.articlePhotos)}
                     width={500}
                     height={500}
                     alt="Picture of the author"
@@ -31,9 +26,12 @@ export const PreviewArticle: FC<PreviewArticleProps> = (article) => {
                             <small>{article.createdAt}</small>
                         </a>
                     </div>
-                    <a className="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">
+                    <Link
+                        href={`${RoutesList.articles}/${article.id}`}
+                        className="h6 m-0 text-white text-uppercase font-weight-semi-bold"
+                    >
                         {article.title}
-                    </a>
+                    </Link>
                 </div>
             </div>
         );

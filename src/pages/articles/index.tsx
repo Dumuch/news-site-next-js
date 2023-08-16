@@ -1,4 +1,4 @@
-import { NextPageWithLayout } from '@/types/Pages.types';
+import { NextPageWithLayout } from '@/types/pages.types';
 import { getStaticProps } from '@/pages/articles/[id]';
 import { ReactElement } from 'react';
 import DefaultLayout from '@/layouts/default';

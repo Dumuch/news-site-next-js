@@ -2,7 +2,7 @@ import qs from 'qs';
 import { AbstractApiClient } from '../abstractApiClient';
 import client from './client';
 import apiRoutes from '../routes';
-import { ArticleList } from '@/models/api/article';
+import { ArticleList } from '@/types/articleStore.types';
 
 export class RemoteServerApiClient extends AbstractApiClient {
     __extendHeaders(headers: { [key: string]: string | undefined }) {

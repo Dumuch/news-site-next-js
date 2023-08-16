@@ -1,3 +1,3 @@
-import { Article } from '@/models/api/article';
+import { ArticleStoreTypes } from '@/types/articleStore.types';
 
-export type PreviewArticleProps = Article;
+export type PreviewArticleProps = ArticleStoreTypes;

@@ -1,11 +1,11 @@
 import { TitleSection } from '@/components/UI/titleSection';
 import { PreviewArticle } from '@/components/UI/previewArticle';
 import { Carousel } from 'primereact/carousel';
-import { Article } from '@/models/api/article';
+import { ArticleStoreTypes } from '@/types/articleStore.types';
 import { FC } from 'react';
 
 interface props {
-    articles: Article[];
+    articles: ArticleStoreTypes[];
 }
 export const PopularArticlesSection: FC<props> = ({ articles }) => {
     return (

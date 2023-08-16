@@ -1,6 +1,7 @@
-import { Filtered, Sorted } from '@/models/api/index';
+import { Filtered, Sorted } from '@/models/api';
+import { ImageInterface } from '@/types/system.types';
 
-export interface Article {
+export interface ArticleStoreTypes {
     id: string;
     title: string;
     description: string;
@@ -11,10 +12,9 @@ export interface Article {
     articlePhotos: ArticlePhoto[] | null;
 }
 
-export interface ArticlePhoto {
+export interface ArticlePhoto extends ImageInterface{
     id: string;
     name: string;
-    path: string;
 }
 
 export interface ArticleList extends Sorted, Filtered {}

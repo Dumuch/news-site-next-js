@@ -1,3 +1,7 @@
+export interface ImageInterface {
+    path: string;
+}
+
 export interface Sorted {
     offset?: number;
     limit?: number;
@@ -14,4 +18,8 @@ export interface Filtered {
 export interface FindAndCountAll<T = []> {
     count: number;
     rows: T;
+}
+
+export enum FormatDateEnum {
+    monthDayYear = 'PP'
 }

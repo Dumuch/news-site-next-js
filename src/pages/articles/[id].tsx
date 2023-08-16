@@ -3,16 +3,18 @@ import { ReactElement } from 'react';
 import DefaultLayout from '@/layouts/default';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { appConfig } from '@/config/app';
-import { NextPageWithLayout } from '@/types/Pages.types';
-import { Article } from '@/models/api/article';
+import { NextPageWithLayout } from '@/types/pages.types';
+import { ArticleStoreTypes } from '@/types/articleStore.types';
 import { RoutesList } from '@/RoutesList';
+import { ArticlesDetailsPage } from '@/components/pages/articlesDetails';
+import DefaultLayoutWithSidebar from '@/layouts/default/defaultWithSidebar';
 
 const Article: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
     article,
 }: {
-    article: Article;
+    article: ArticleStoreTypes;
 }) => {
-    return <div>{article.title}</div>;
+    return <ArticlesDetailsPage article={article} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -45,7 +47,7 @@ export async function getStaticPaths() {
 }
 
 Article.getLayout = function getLayout(page: ReactElement) {
-    return <DefaultLayout title={'Homepage Title'}>{page}</DefaultLayout>;
+    return <DefaultLayoutWithSidebar title={'Homepage Title'}>{page}</DefaultLayoutWithSidebar>;
 };
 
 export default Article;

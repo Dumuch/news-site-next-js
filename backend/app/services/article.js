@@ -18,7 +18,15 @@ class ArticleService {
     }
 
     static async get(articleId) {
-        const options = {};
+        const options = {
+            include: [
+                {
+                    attributes: ['id', 'path', 'name'],
+                    model: articlePhoto,
+                    limit: 1
+                }
+            ]
+        };
         return article.findByPk(articleId, options);
 
     }

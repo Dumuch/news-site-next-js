@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Article } from '@/models/api/article';
+import { ArticleStoreTypes } from '@/types/articleStore.types';
 import { PopularArticlesSection } from '@/components/pages/home/popularSection';
 import { MastheadSection } from '@/components/pages/home/mastheadSection';
 
 interface props {
-    articles: Article[];
+    articles: ArticleStoreTypes[];
 }
 
 export const HomePage: FC<props> = ({ articles }) => {
