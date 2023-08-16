@@ -12,7 +12,11 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
         <main>
             <ul>
                 {articles?.map((article) => {
-                    return <li key={article.id}><Link href={`${RoutesList.articles}/${article.id}`}>{article.title}</Link></li>;
+                    return (
+                        <li key={article.id}>
+                            <Link href={`${RoutesList.articles}/${article.id}`}>{article.title}</Link>
+                        </li>
+                    );
                 })}
             </ul>
         </main>

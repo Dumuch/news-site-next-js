@@ -19,16 +19,6 @@ interface ItemArticle extends ArticleState {
     item?: Article;
 }
 
-interface ICSData extends ArticleState {
-    data: string | null;
-}
-
-interface ExternalCalendarsList extends ArticleState {
-    isRemoveLoading: boolean;
-    isEditLoading: boolean;
-    isSyncLoading: boolean;
-}
-
 export class ArticleStore {
     list: ListArticle = {
         items: [],
@@ -53,35 +43,6 @@ export class ArticleStore {
 
     get isLoading() {
         return this.list.isLoading || this.item.isLoading;
-    }
-
-    async fetchList(limit = 30, offset = 0, field = '', order = 0) {
-        if (this.isLoading) {
-            return;
-        }
-
-        this.list.isLoading = true;
-
-        try {
-            // const { data } = await api.articleList({
-            //     limit: limit,
-            //     offset: offset,
-            //     sortField: field,
-            //     sortOrder: order,
-            // });
-            // runInAction(() => {
-            //     this.list.items = data.rows;
-            //     this.list.count = data.count;
-            //     this.list.isFetched = true;
-            // });
-            // return data.rows;
-        } catch (e) {
-            console.log(e);
-        } finally {
-            runInAction(() => {
-                this.list.isLoading = false;
-            });
-        }
     }
 
     async get(id: string): Promise<Article> {
@@ -116,7 +77,6 @@ export class ArticleStore {
             const { data } = await api.getPopularArticles();
             return data;
         } catch (e) {
-            console.log(e);
             throw new Error();
         } finally {
             runInAction(() => {

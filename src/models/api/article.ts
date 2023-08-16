@@ -10,4 +10,3 @@ export interface Article {
 }
 
 export interface ArticleList extends Sorted, Filtered {}
-

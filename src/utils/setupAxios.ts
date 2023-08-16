@@ -9,6 +9,7 @@ function createAppVersionChecker() {
         }
         if (!lastAppVersion) {
             lastAppVersion = currAppVersion;
+            // eslint-disable-next-line no-return-assign, no-console
             console.log('App Version:', currAppVersion);
             return;
         }

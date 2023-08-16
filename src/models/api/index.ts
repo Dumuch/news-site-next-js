@@ -1,4 +1,3 @@
-
 export interface Sorted {
     offset?: number;
     limit?: number;
