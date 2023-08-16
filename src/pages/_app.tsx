@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
-import { RootStore } from '../store/';
+import { RootStore } from '../store';
 import { removeDevTools } from '@/utils/removeDevTools';
 import NextNProgress from 'nextjs-progressbar';
 import StoreProviderClient from '@/store/StoreProviderClient';
@@ -15,7 +15,6 @@ type AppPropsWithLayout = AppProps & {
 };
 
 removeDevTools();
-
 const rootStore = new RootStore();
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {

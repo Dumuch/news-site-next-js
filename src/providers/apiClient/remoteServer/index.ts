@@ -2,7 +2,7 @@ import qs from 'qs';
 import { AbstractApiClient } from '../abstractApiClient';
 import client from './client';
 import apiRoutes from '../routes';
-import { ArticleList } from '@/models/api';
+import { ArticleList } from '@/models/api/article';
 
 export class RemoteServerApiClient extends AbstractApiClient {
     __extendHeaders(headers: { [key: string]: string | undefined }) {
@@ -19,24 +19,8 @@ export class RemoteServerApiClient extends AbstractApiClient {
         });
     }
 
-    articlesNamesList() {
-        return client.get(apiRoutes.articles.popular);
-    }
-
-    createArticle() {
-        return client.get(apiRoutes.articles.list);
-    }
-
-    articleGet(id: string, isOpen: boolean) {
-        return client.get(`${apiRoutes.articles.popular}`);
-    }
-
-    articleDelete(id: string) {
-        return client.delete(apiRoutes.articles.popular);
-    }
-
-    articleDeletePhoto(photoId: string) {
-        return client.delete(`${apiRoutes.articles.popular}`);
+    articleGet(id: string) {
+        return client.get(`${apiRoutes.articles.list}/${id}`);
     }
 
     getPopularArticles() {

@@ -1,15 +1,11 @@
 import { AxiosPromise } from 'axios';
-import { ArticleList, FindAndCountAll } from '@/models/api';
-import { Article } from '@/models/api/article';
+import { Article, ArticleList } from '@/models/api/article';
+import { FindAndCountAll } from '@/models/api';
 
 export abstract class AbstractApiClient {
-    abstract articleList(params?: ArticleList): AxiosPromise<FindAndCountAll>;
+    abstract articleList(params?: ArticleList): AxiosPromise<FindAndCountAll<Article>>;
 
-    abstract articlesNamesList(): AxiosPromise<{ name: string }[]>;
-
-    abstract createArticle(): AxiosPromise<Article>;
-
-    abstract articleGet(id: string, isOpen: boolean): AxiosPromise<Article>;
+    abstract articleGet(id: string): AxiosPromise<Article>;
     abstract getPopularArticles(): AxiosPromise<Article[]>;
     abstract __extendHeaders(headers: { [key: string]: string | undefined }): void;
 

@@ -1,4 +1,3 @@
-export interface ArticleList extends Sorted, Filtered {}
 
 export interface Sorted {
     offset?: number;

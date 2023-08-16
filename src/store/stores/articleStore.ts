@@ -1,6 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { RootStore } from './root';
-import { tableConfig } from '@/config/table';
 import { Article } from '@/models/api/article';
 import container from '@/container/container';
 
@@ -56,7 +55,7 @@ export class ArticleStore {
         return this.list.isLoading || this.item.isLoading;
     }
 
-    async fetchList(limit = tableConfig.row, offset = 0, field = '', order = 0) {
+    async fetchList(limit = 30, offset = 0, field = '', order = 0) {
         if (this.isLoading) {
             return;
         }
@@ -85,19 +84,19 @@ export class ArticleStore {
         }
     }
 
-    async get(id: string, isOpen = true, toast = true) {
+    async get(id: string): Promise<Article> {
         if (this.isLoading) {
             return;
         }
         this.item.isLoading = true;
         this.item.isFetched = false;
         try {
-            // const { data } = await api.articleGet(id, isOpen);
-            //
-            // runInAction(() => {
-            //     this.item.item = data;
-            // });
-            // return data;
+            const { data } = await api.articleGet(id);
+
+            runInAction(() => {
+                this.item.item = data;
+            });
+            return data;
         } catch (e) {
             throw new Error();
         } finally {
