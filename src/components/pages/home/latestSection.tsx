@@ -3,6 +3,7 @@ import { ArticleInterface } from '@/types/articleStore.types';
 import { FC } from 'react';
 import { PreviewCard } from '@/components/UI/previewCard';
 import { RoutesList } from '@/RoutesList';
+import Link from 'next/link';
 
 interface props {
     articles: ArticleInterface[];
@@ -11,7 +12,7 @@ interface props {
 export const LatestArticlesSection: FC<props> = ({ articles }) => {
     return (
         <section>
-            <TitleSection title={'Latest Articles'} />
+            <TitleSection title={'Latest Articles'}><Link className={'text-secondary font-weight-medium'} href={RoutesList.articles}>View All</Link></TitleSection>
             <div className="row">
                 {articles.map((article) => {
                     return (
