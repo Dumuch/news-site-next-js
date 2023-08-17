@@ -1,5 +1,6 @@
 const { models: { article, articlePhoto } } = require('../models');
 const { Op } = require('sequelize');
+const sequelize = require('../models');
 
 
 class ArticleService {
@@ -40,7 +41,22 @@ class ArticleService {
                     limit: 1
                 }
             ],
-            limit: 10,
+            limit: 9,
+            order: sequelize.random()
+        }
+        return article.findAll(options);
+    }
+
+    static async getLatest() {
+        const options = {
+            include: [
+                {
+                    attributes: ['id', 'path', 'name'],
+                    model: articlePhoto,
+                    limit: 1
+                }
+            ],
+            limit: 9,
             order: [['createdAt', 'desc']]
         }
         return article.findAll(options);

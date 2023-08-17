@@ -1,10 +1,9 @@
 import { UseServerStores } from '@/store/useServerStores';
 import { ReactElement } from 'react';
-import DefaultLayout from '@/layouts/default';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { appConfig } from '@/config/app';
 import { NextPageWithLayout } from '@/types/pages.types';
-import { ArticleStoreTypes } from '@/types/articleStore.types';
+import { ArticleInterface } from '@/types/articleStore.types';
 import { RoutesList } from '@/RoutesList';
 import { ArticlesDetailsPage } from '@/components/pages/articlesDetails';
 import DefaultLayoutWithSidebar from '@/layouts/default/defaultWithSidebar';
@@ -12,7 +11,7 @@ import DefaultLayoutWithSidebar from '@/layouts/default/defaultWithSidebar';
 const Article: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
     article,
 }: {
-    article: ArticleStoreTypes;
+    article: ArticleInterface;
 }) => {
     return <ArticlesDetailsPage article={article} />;
 };

@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { RootStore } from './root';
-import { ArticleStoreTypes } from '@/types/articleStore.types';
+import { ArticleInterface } from '@/types/articleStore.types';
 import container from '@/container/container';
 
 const api = container.apiClient;
@@ -11,12 +11,12 @@ interface ArticleState {
 }
 
 interface ListArticle extends ArticleState {
-    items: ArticleStoreTypes[];
+    items: ArticleInterface[];
     count: number;
 }
 
 interface ItemArticle extends ArticleState {
-    item?: ArticleStoreTypes;
+    item?: ArticleInterface;
 }
 
 export class ArticleStore {
@@ -45,7 +45,7 @@ export class ArticleStore {
         return this.list.isLoading || this.item.isLoading;
     }
 
-    async get(id: string): Promise<ArticleStoreTypes> {
+    async get(id: string): Promise<ArticleInterface> {
         if (this.isLoading) {
             return;
         }
@@ -75,6 +75,23 @@ export class ArticleStore {
         this.item.isLoading = true;
         try {
             const { data } = await api.getPopularArticles();
+            return data;
+        } catch (e) {
+            throw new Error();
+        } finally {
+            runInAction(() => {
+                this.item.isLoading = false;
+            });
+        }
+    }
+
+    async getLatest() {
+        if (this.isLoading) {
+            return;
+        }
+        this.item.isLoading = true;
+        try {
+            const { data } = await api.getLatestArticles();
             return data;
         } catch (e) {
             throw new Error();

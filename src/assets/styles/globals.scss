@@ -2,6 +2,7 @@ $primary: #FFCC00;
 $secondary: #31404B;
 $light: #FFFFFF;
 $dark: #1E2024;
+$grey:#dee2e6;
 
 $font-family-sans-serif: 'Montserrat', sans-serif;
 
@@ -26,6 +27,7 @@ $grid-gutter-width: 1rem;
 
 :root {
   --color-primary: #{$primary};
+  --color-grey: #{$grey};
 }
 
 a {

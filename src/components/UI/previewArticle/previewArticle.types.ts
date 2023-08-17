@@ -1,3 +1,3 @@
-import { ArticleStoreTypes } from '@/types/articleStore.types';
+import { ArticleInterface } from '@/types/articleStore.types';
 
-export type PreviewArticleProps = ArticleStoreTypes;
+export type PreviewArticleProps = ArticleInterface;

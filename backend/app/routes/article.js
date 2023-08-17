@@ -16,9 +16,16 @@ module.exports = (app) => {
     });
 
     route.get('/get-popular', async function(req, res, next) {
-        console.log(req.headers);
         try {
             next(await ArticleService.getPopular());
+        } catch (e) {
+            next(e);
+        }
+    });
+
+    route.get('/get-latest', async function(req, res, next) {
+        try {
+            next(await ArticleService.getLatest());
         } catch (e) {
             next(e);
         }

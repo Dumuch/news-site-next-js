@@ -1,7 +1,7 @@
 import { Filtered, Sorted } from '@/models/api';
 import { ImageInterface } from '@/types/system.types';
 
-export interface ArticleStoreTypes {
+export interface ArticleInterface {
     id: string;
     title: string;
     description: string;
@@ -9,10 +9,10 @@ export interface ArticleStoreTypes {
     updatedAt: string;
     deletedAt: string | null;
 
-    articlePhotos: ArticlePhoto[] | null;
+    articlePhotos: ArticlePhotoInterface[] | null;
 }
 
-export interface ArticlePhoto extends ImageInterface{
+export interface ArticlePhotoInterface extends ImageInterface {
     id: string;
     name: string;
 }

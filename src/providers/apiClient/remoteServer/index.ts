@@ -26,4 +26,8 @@ export class RemoteServerApiClient extends AbstractApiClient {
     getPopularArticles() {
         return client.get(apiRoutes.articles.popular);
     }
+
+    getLatestArticles() {
+        return client.get(apiRoutes.articles.latest);
+    }
 }

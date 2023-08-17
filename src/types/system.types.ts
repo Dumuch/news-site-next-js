@@ -21,5 +21,5 @@ export interface FindAndCountAll<T = []> {
 }
 
 export enum FormatDateEnum {
-    monthDayYear = 'PP'
+    monthDayYear = 'PP',
 }
