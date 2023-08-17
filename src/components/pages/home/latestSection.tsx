@@ -1,7 +1,8 @@
 import { TitleSection } from '@/components/UI/titleSection';
 import { ArticleInterface } from '@/types/articleStore.types';
 import { FC } from 'react';
-import { PreviewArticle } from '@/components/UI/previewArticle';
+import { PreviewCard } from '@/components/UI/previewCard';
+import { RoutesList } from '@/RoutesList';
 
 interface props {
     articles: ArticleInterface[];
@@ -15,7 +16,7 @@ export const LatestArticlesSection: FC<props> = ({ articles }) => {
                 {articles.map((article) => {
                     return (
                         <div key={article.id} className={'col-md-6 col-lg-4'}>
-                            <PreviewArticle {...article} />
+                            <PreviewCard {...article} href={RoutesList.articles + '/' + article.id} photos={article.articlePhotos} />
                         </div>
                     );
                 })}

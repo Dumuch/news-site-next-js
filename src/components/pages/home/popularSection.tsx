@@ -1,8 +1,10 @@
 import { TitleSection } from '@/components/UI/titleSection';
-import { PreviewArticleMin } from '@/components/UI/previewArticle/previewArticleMin';
+import { PreviewCardMin } from '@/components/UI/previewCard/previewCardMin';
 import { Carousel } from 'primereact/carousel';
 import { ArticleInterface } from '@/types/articleStore.types';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
+import { PreviewCardProps } from '@/components/UI/previewCard/previewCard.types';
+import { RoutesList } from '@/RoutesList';
 
 interface props {
     articles: ArticleInterface[];
@@ -27,10 +29,21 @@ const responsiveOptions = [
 ];
 
 export const PopularArticlesSection: FC<props> = ({ articles }) => {
+    const arrayFoCarousel = useMemo(() => {
+        return articles.map(article => {
+         return (
+             {
+                 ...article,
+                 photos: article.articlePhotos,
+                 href: RoutesList.articles + '/' + article.id
+             } as PreviewCardProps
+         )
+        })
+    }, [articles]);
     return (
         <section>
             <TitleSection title={'Popular Articles'} />
-            <Carousel value={articles} numVisible={4} responsiveOptions={responsiveOptions} numScroll={1} itemTemplate={PreviewArticleMin} />
+            <Carousel value={arrayFoCarousel} numVisible={4} responsiveOptions={responsiveOptions} numScroll={1} itemTemplate={PreviewCardMin} />
         </section>
     );
 };

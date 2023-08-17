@@ -1,5 +1,5 @@
 import { Filtered, Sorted } from '@/models/api';
-import { ImageInterface } from '@/types/system.types';
+import { CategoryInterface, ImageInterface } from '@/types/system.types';
 
 export interface ArticleInterface {
     id: string;
@@ -10,7 +10,7 @@ export interface ArticleInterface {
     deletedAt: string | null;
 
     articlePhotos: ArticlePhotoInterface[] | null;
-    category: CategoryInterface | null;
+    category: ArticleCategoryInterface | null;
 }
 
 export interface ArticlePhotoInterface extends ImageInterface {
@@ -18,8 +18,8 @@ export interface ArticlePhotoInterface extends ImageInterface {
     name: string;
 }
 
-export interface CategoryInterface {
-    title: string;
+export interface ArticleCategoryInterface extends CategoryInterface {
 }
 
-export interface ArticleList extends Sorted, Filtered {}
+export interface ArticleList extends Sorted, Filtered {
+}

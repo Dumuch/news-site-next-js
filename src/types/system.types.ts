@@ -2,6 +2,10 @@ export interface ImageInterface {
     path: string;
 }
 
+export interface CategoryInterface {
+    title: string;
+}
+
 export interface Sorted {
     offset?: number;
     limit?: number;

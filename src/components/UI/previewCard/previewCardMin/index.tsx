@@ -1,45 +1,44 @@
-import styles from '../PreviewArticle.module.scss';
+import styles from '../previewCard.module.scss';
 import { FC, useMemo } from 'react';
-import { PreviewArticleProps } from '../PreviewArticle.types';
+import { PreviewCardProps } from '../previewCard.types';
 import Link from 'next/link';
-import { RoutesList } from '@/RoutesList';
 import { getFirstImagePath, getFormatDate } from '@/utils/helpers';
 import { FormatDateEnum } from '@/types/system.types';
 import { ImageComponent } from '@/components/UI/image';
 
-export const PreviewArticleMin: FC<PreviewArticleProps> = (article) => {
+export const PreviewCardMin: FC<PreviewCardProps> = ( item) => {
     const memoComponent = useMemo(() => {
         return (
-            <div className={`position-relative overflow-hidden m-2 ${styles.previewArticleMin}`}>
+            <div className={`position-relative overflow-hidden m-2 ${styles.previewCardMin}`}>
                 <ImageComponent
                     className="img-fluid h-100 object-fit-cover"
-                    src={getFirstImagePath(article.articlePhotos)}
+                    src={getFirstImagePath( item.photos)}
                     width={500}
                     height={500}
-                    alt={article.title}
+                    alt={ item.title}
                 />
 
                 <div className="overlay">
                     <div className="mb-2">
-                        {article.category && (
+                        { item.category && (
                             <a className='badge badge-primary text-uppercase font-weight-semi-bold p-2 me-2' href=''>
-                                {article.category.title}
+                                { item.category.title}
                             </a>
                         )}
                         <a className="text-white" href="@/components/UI/previewArticle/PreviewArticleMin/index">
-                            <small>{getFormatDate(article.createdAt, FormatDateEnum.monthDayYear)}</small>
+                            <small>{getFormatDate( item.createdAt, FormatDateEnum.monthDayYear)}</small>
                         </a>
                     </div>
                     <Link
-                        href={`${RoutesList.articles}/${article.id}`}
+                        href={item.href}
                         className={`h6 m-0 text-white text-uppercase font-weight-semi-bold ${styles.title}`}
                     >
-                        {article.title}
+                        { item.title}
                     </Link>
                 </div>
             </div>
         );
-    }, [article]);
+    }, [ item]);
 
     return <>{memoComponent}</>;
 };
