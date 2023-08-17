@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { RootStore } from './root';
-import { ArticleInterface } from '@/types/articleStore.types';
+import { ArticleInterface, SearchArticles } from '@/types/articleStore.types';
 import container from '@/container/container';
 
 const api = container.apiClient;
@@ -100,5 +100,28 @@ export class ArticleStore {
                 this.item.isLoading = false;
             });
         }
+    }
+
+    async getSearch(params: SearchArticles) {
+        if (this.isLoading) return;
+        runInAction(() => {
+            this.list.isFetched = false;
+            this.list.isLoading = true;
+        });
+        try {
+            const { data } = await api.getSearchArticles(params);
+            runInAction(() => {
+                this.list.items = data.rows;
+                this.list.count = data.count;
+                this.list.isFetched = true;
+            });
+            return data;
+        } catch (e) {
+        } finally {
+            runInAction(() => {
+                this.list.isLoading = false;
+            });
+        }
+
     }
 }

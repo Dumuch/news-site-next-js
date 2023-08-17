@@ -19,14 +19,14 @@ export const PreviewCardMin: FC<PreviewCardProps> = ( item) => {
                 />
 
                 <div className="overlay">
-                    <div className="mb-2">
+                    <div className={`mb-2 ${styles.wrapperBadge}`}>
                         { item.category && (
                             <a className='badge badge-primary text-uppercase font-weight-semi-bold p-2 me-2' href=''>
                                 { item.category.title}
                             </a>
                         )}
                         <a className="text-white" href="@/components/UI/previewArticle/PreviewArticleMin/index">
-                            <small>{getFormatDate( item.createdAt, FormatDateEnum.monthDayYear)}</small>
+                            <small className={styles.date}>{getFormatDate( item.createdAt, FormatDateEnum.monthDayYear)}</small>
                         </a>
                     </div>
                     <Link

@@ -2,7 +2,7 @@ import qs from 'qs';
 import { AbstractApiClient } from '../abstractApiClient';
 import client from './client';
 import apiRoutes from '../routes';
-import { ArticleList } from '@/types/articleStore.types';
+import { SearchArticles } from '@/types/articleStore.types';
 
 export class RemoteServerApiClient extends AbstractApiClient {
     __extendHeaders(headers: { [key: string]: string | undefined }) {
@@ -10,13 +10,6 @@ export class RemoteServerApiClient extends AbstractApiClient {
             // @ts-ignore
             client.defaults.headers[key] = headers[key];
         }
-    }
-
-    articleList(params?: ArticleList) {
-        return client.get(apiRoutes.articles.list, {
-            params,
-            paramsSerializer: (params) => qs.stringify(params),
-        });
     }
 
     articleGet(id: string) {
@@ -29,5 +22,12 @@ export class RemoteServerApiClient extends AbstractApiClient {
 
     getLatestArticles() {
         return client.get(apiRoutes.articles.latest);
+    }
+
+    getSearchArticles(params: SearchArticles){
+        return client.get(apiRoutes.articles.search, {
+            params,
+            paramsSerializer: (params) => qs.stringify(params),
+        });
     }
 }

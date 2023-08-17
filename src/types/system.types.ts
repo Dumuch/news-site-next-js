@@ -19,7 +19,7 @@ export interface Filtered {
     };
 }
 
-export interface FindAndCountAll<T = []> {
+export interface FindAndCountAllInterface<T = []> {
     count: number;
     rows: T;
 }

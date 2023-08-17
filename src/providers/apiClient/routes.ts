@@ -7,6 +7,7 @@ const apiRoutes = {
         list: `/${paths.articles}`,
         popular: `/${paths.articles}/get-popular`,
         latest: `/${paths.articles}/get-latest`,
+        search: `/${paths.articles}/search`
     },
 };
 

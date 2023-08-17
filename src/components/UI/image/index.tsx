@@ -16,6 +16,7 @@ export const ImageComponent: FC<ImageProps> = ({ src, classNameImage = '', alt =
     const onLoad = useCallback(() => {
         setIsLoading(false);
     }, [src]);
+
     return (
 
         <div className={styles.wrapperImage}>

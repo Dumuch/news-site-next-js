@@ -1,4 +1,5 @@
 .badge {
+  white-space: break-spaces;
   @include hover-opacity;
 
   &-primary {

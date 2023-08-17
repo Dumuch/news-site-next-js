@@ -23,3 +23,7 @@ export interface ArticleCategoryInterface extends CategoryInterface {
 
 export interface ArticleList extends Sorted, Filtered {
 }
+
+export interface SearchArticles {
+    page?: number;
+}
