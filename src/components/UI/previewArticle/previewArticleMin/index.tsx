@@ -21,12 +21,11 @@ export const PreviewArticleMin: FC<PreviewArticleProps> = (article) => {
 
                 <div className="overlay">
                     <div className="mb-2">
-                        <a
-                            className="badge badge-primary text-uppercase font-weight-semi-bold p-2 me-2"
-                            href="@/components/UI/previewArticle/PreviewArticleMin/index"
-                        >
-                            Business
-                        </a>
+                        {article.category && (
+                            <a className='badge badge-primary text-uppercase font-weight-semi-bold p-2 me-2' href=''>
+                                {article.category.title}
+                            </a>
+                        )}
                         <a className="text-white" href="@/components/UI/previewArticle/PreviewArticleMin/index">
                             <small>{getFormatDate(article.createdAt, FormatDateEnum.monthDayYear)}</small>
                         </a>

@@ -10,11 +10,16 @@ export interface ArticleInterface {
     deletedAt: string | null;
 
     articlePhotos: ArticlePhotoInterface[] | null;
+    category: CategoryInterface | null;
 }
 
 export interface ArticlePhotoInterface extends ImageInterface {
     id: string;
     name: string;
+}
+
+export interface CategoryInterface {
+    title: string;
 }
 
 export interface ArticleList extends Sorted, Filtered {}

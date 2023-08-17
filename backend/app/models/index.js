@@ -10,6 +10,7 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.p
 });
 
 const modelDefiners = [
+    require('./category'),
     require('./article'),
     require('./articlePhoto'),
 ];
@@ -19,11 +20,14 @@ for (const modelDefiner of modelDefiners) {
 }
 
 const {
+    category,
     article,
     articlePhoto,
 } = sequelize.models;
 
 article.hasMany(articlePhoto);
 articlePhoto.belongsTo(article);
+
+article.belongsTo(category);
 
 module.exports = sequelize;

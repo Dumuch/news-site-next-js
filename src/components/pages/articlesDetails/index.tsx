@@ -21,9 +21,11 @@ export const ArticlesDetailsPage: FC<props> = ({ article }) => {
                 />
                 <article className="bg-white border border-top-0 p-4">
                     <div className="mb-3">
-                        <a className="badge badge-primary text-uppercase font-weight-semi-bold p-2 me-2" href="">
-                            Business
-                        </a>
+                        {article.category && (
+                            <a className='badge badge-primary text-uppercase font-weight-semi-bold p-2  me-2' href=''>
+                                {article.category.title}
+                            </a>
+                        )}
                         <a className="text-body" href="">
                             {getFormatDate(article.createdAt, FormatDateEnum.monthDayYear)}
                         </a>

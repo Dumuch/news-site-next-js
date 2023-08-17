@@ -1,4 +1,4 @@
-const { models: { article, articlePhoto } } = require('../models');
+const { models: { article, articlePhoto, category } } = require('../models');
 const { Op } = require('sequelize');
 const sequelize = require('../models');
 
@@ -25,6 +25,10 @@ class ArticleService {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
                     limit: 1
+                },
+                {
+                    attributes: ['title'],
+                    model: category,
                 }
             ]
         };
@@ -39,6 +43,10 @@ class ArticleService {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
                     limit: 1
+                },
+                {
+                    attributes: ['title'],
+                    model: category,
                 }
             ],
             limit: 9,
@@ -54,6 +62,10 @@ class ArticleService {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
                     limit: 1
+                },
+                {
+                    attributes: ['title'],
+                    model: category,
                 }
             ],
             limit: 9,
