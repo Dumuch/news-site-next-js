@@ -4,9 +4,12 @@ import { Skeleton } from 'primereact/skeleton';
 import { FC, memo } from 'react';
 import { SkeletonProps } from '@/components/UI/skeleton/skeleton.types';
 
-export const SkeletonComponent: FC<SkeletonProps> = memo((props) => {
+export const SkeletonComponent: FC<SkeletonProps> = memo((props: SkeletonProps) => {
+    const { show, className, ...restProps } = props;
+    const skeletonClassName = `${className} ${styles.imageSkeleton} ${show ? styles.show : styles.hide}`;
+
     return  <Skeleton
-        {...props}
-        className={`${props.className} ${styles.imageSkeleton} ${props.show ? styles.show : styles.hide}`}
+        {...restProps}
+        className={skeletonClassName}
     />
 })

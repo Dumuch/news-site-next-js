@@ -26,9 +26,9 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
         layout: 'PrevPageLink PageLinks NextPageLink',
         PrevPageLink: (options) => {
             return (
-                <div className={classNames({ disabled: options.disabled })}>
+                <div className={classNames({ [styles.disabled]: options.disabled })}>
                     {options.disabled ? (
-                        <a className={classNames({ disabled: options.disabled })}>
+                        <a>
                             <FontAwesomeIcon icon={faChevronLeft} />
                         </a>
                     ) : (
@@ -48,9 +48,9 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
         },
         NextPageLink: (options) => {
             return (
-                <div className={classNames({ disabled: options.disabled })}>
+                <div className={classNames({ [styles.disabled]: options.disabled })}>
                     {options.disabled ? (
-                        <a className={classNames({ disabled: options.disabled })}>
+                        <a>
                             <FontAwesomeIcon icon={faChevronRight} />
                         </a>
                     ) : (
