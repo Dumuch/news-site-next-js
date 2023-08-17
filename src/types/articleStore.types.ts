@@ -1,5 +1,5 @@
 import { Filtered, Sorted } from '@/models/api';
-import { CategoryInterface, ImageInterface } from '@/types/system.types';
+import { CategoryInterface, ImageInterface, SearchInterface } from '@/types/system.types';
 
 export interface ArticleInterface {
     id: string;
@@ -24,6 +24,6 @@ export interface ArticleCategoryInterface extends CategoryInterface {
 export interface ArticleList extends Sorted, Filtered {
 }
 
-export interface SearchArticles {
-    page?: number;
+export interface SearchArticles extends SearchInterface {
+    q?: string;
 }

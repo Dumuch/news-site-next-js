@@ -27,3 +27,7 @@ export interface FindAndCountAllInterface<T = []> {
 export enum FormatDateEnum {
     monthDayYear = 'PP',
 }
+
+export interface SearchInterface {
+    page?: number;
+}

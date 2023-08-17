@@ -16,7 +16,7 @@ class ArticleService {
                 },
                 {
                     attributes: ['title'],
-                    model: category,
+                    model: category
                 }
             ]
         };
@@ -34,12 +34,12 @@ class ArticleService {
                 },
                 {
                     attributes: ['title'],
-                    model: category,
+                    model: category
                 }
             ],
             limit: 9,
             order: sequelize.random()
-        }
+        };
         return article.findAll(options);
     }
 
@@ -53,12 +53,12 @@ class ArticleService {
                 },
                 {
                     attributes: ['title'],
-                    model: category,
+                    model: category
                 }
             ],
             limit: 9,
             order: [['createdAt', 'desc']]
-        }
+        };
         return article.findAll(options);
     }
 
@@ -72,13 +72,17 @@ class ArticleService {
                 },
                 {
                     attributes: ['title'],
-                    model: category,
+                    model: category
                 }
             ],
             limit: 12,
             offset: params?.page ? (Number(params.page) - 1) * 12 : 0,
-            distinct: true,
-        }
+            distinct: true
+        };
+
+        const whereParams = {
+            [Op.and]: {}
+        };
 
         let order;
         switch (params?.order) {
@@ -92,11 +96,17 @@ class ArticleService {
                 order = [['createdAt', 'desc']];
         }
 
-        const result = await article.findAndCountAll({ ...options, order });
+        if (params?.q) {
+            whereParams[Op.and]['title'] = {
+                [Op.like]: `%${params.q}%`
+            };
+        }
+
+        const result = await article.findAndCountAll({ ...options, where: whereParams, order });
 
         return {
             rows: result.rows,
-            count: result.count,
+            count: result.count
         };
     }
 
