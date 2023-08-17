@@ -25,9 +25,10 @@ $grid-gutter-width: 1rem;
 @import "mixins";
 @import "_badge";
 
-:root {
+:root, [data-bs-theme=light] {
   --color-primary: #{$primary};
   --color-grey: #{$grey};
+  --bs-primary: #{$primary};
 }
 
 a {

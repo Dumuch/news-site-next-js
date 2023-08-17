@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, memo, useEffect, useRef, useState } from 'react';
 import { PaginationProps } from '@/components/UI/pagination/pagination.types';
 import { Paginator, PaginatorTemplateOptions } from 'primereact/paginator';
 import 'primereact/paginator/paginator.min.css';
@@ -37,6 +37,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                                 pathname: router.pathname,
                                 query: { ...router.query, page: currentPageRef.current - 1 }
                             }}
+                            className={styles.link}
                         ><span>
                             <FontAwesomeIcon icon={faChevronLeft} />
                         </span>
@@ -58,7 +59,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                                 pathname: router.pathname,
                                 query: { ...router.query, page: currentPageRef.current + 1 }
                             }}
-                            className={classNames({ disabled: options.disabled })}
+                            className={classNames(styles.link, { disabled: options.disabled })}
                         >
                             <span>
                                 <FontAwesomeIcon icon={faChevronRight} />
@@ -82,6 +83,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                                         pathname: router.pathname,
                                         query: { ...router.query, page: options.page + 1 }
                                     }}
+                                    className={styles.link}
                                 >
                                     {options.page + 1}
                                 </Link>
@@ -98,6 +100,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                                         pathname: router.pathname,
                                         query: { ...router.query, page: options.totalPages }
                                     }}
+                                    className={styles.link}
                                 >
                                     {options.totalPages}
                                 </Link>
@@ -115,7 +118,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                             pathname: router.pathname,
                             query: { ...router.query, page: options.page + 1 }
                         }}
-                        className={classNames({ [styles.active]: options.className.includes('p-highlight') })}
+                        className={classNames(styles.link, { [styles.active]: options.className.includes('p-highlight') })}
                     >
                         {options.page + 1}
                     </Link>
