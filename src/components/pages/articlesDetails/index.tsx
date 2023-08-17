@@ -3,6 +3,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { getFirstImagePath, getFormatDate } from '@/utils/helpers';
 import { FormatDateEnum } from '@/types/system.types';
+import { ImageComponent } from '@/components/UI/image';
 
 interface props {
     article: ArticleInterface;
@@ -11,12 +12,12 @@ export const ArticlesDetailsPage: FC<props> = ({ article }) => {
     return (
         <>
             <div className="position-relative mb-3">
-                <Image
+                <ImageComponent
                     className="img-fluid h-100 w-100 object-fit-cover"
                     src={getFirstImagePath(article.articlePhotos)}
                     width={500}
                     height={500}
-                    alt="Picture of the author"
+                    alt={article.title}
                 />
                 <article className="bg-white border border-top-0 p-4">
                     <div className="mb-3">
