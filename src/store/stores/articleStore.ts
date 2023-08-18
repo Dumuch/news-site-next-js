@@ -124,4 +124,21 @@ export class ArticleStore {
         }
 
     }
+
+    async getCategories() {
+        if (this.isLoading) {
+            return;
+        }
+        this.item.isLoading = true;
+        try {
+            const { data } = await api.getArticleCategories();
+            return data;
+        } catch (e) {
+            throw new Error();
+        } finally {
+            runInAction(() => {
+                this.item.isLoading = false;
+            });
+        }
+    }
 }

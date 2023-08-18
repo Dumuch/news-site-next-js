@@ -1,5 +1,5 @@
 $primary: #FFCC00;
-$secondary: #31404B;
+$secondary: rgb(30, 32, 36);
 $light: #FFFFFF;
 $dark: #1E2024;
 $grey:#dee2e6;
@@ -27,6 +27,8 @@ $grid-gutter-width: 1rem;
 
 :root, [data-bs-theme=light] {
   --color-primary: #{$primary};
+  --color-light: #{$light};
+  --color-secondary: #{$secondary};
   --color-grey: #{$grey};
   --bs-primary: #{$primary};
 }

@@ -1,9 +1,6 @@
 const { models: { article, articlePhoto, category } } = require('../models');
 const { Op } = require('sequelize');
 const sequelize = require('../models');
-const { differenceInCalendarDays, sub, setDate, add } = require('date-fns');
-const { zonedTimeToUtc } = require('date-fns-tz');
-
 
 class ArticleService {
     static async get(articleId) {
@@ -71,7 +68,7 @@ class ArticleService {
                     limit: 1
                 },
                 {
-                    attributes: ['title'],
+                    attributes: ['id', 'title'],
                     model: category
                 }
             ],
@@ -102,12 +99,24 @@ class ArticleService {
             };
         }
 
+        if (params?.categoryId) {
+            whereParams[Op.and]['categoryId'] = params.categoryId;
+        }
+
         const result = await article.findAndCountAll({ ...options, where: whereParams, order });
 
         return {
             rows: result.rows,
             count: result.count
         };
+    }
+
+    static async getCategories() {
+        const options = {
+            attributes: ['id', 'title'],
+            order: [['title', 'asc']]
+        };
+        return category.findAll(options);
     }
 
 

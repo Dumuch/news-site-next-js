@@ -1,35 +1,11 @@
 import Link from 'next/link';
 import { RoutesList } from '@/RoutesList';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { HeaderSearchComponent } from '@/layouts/default/header/search';
+import { isActiveLink } from '@/utils/helpers';
 import { useRouter } from 'next/router';
-import { Form, Formik } from 'formik';
 
-const isActiveLink = (router, currentRoute) => {
-    return router.route === currentRoute ? 'active' : '';
-};
-
-
-interface valuesFormik {
-    query: string;
-}
-
-const Header = () => {
+export const Header = () => {
     const router = useRouter();
-
-    const onSubmit = (data: valuesFormik) => {
-        router.push(
-            {
-                pathname: router.pathname !== RoutesList.articles ? RoutesList.articles : router.pathname,
-                query: { ...router.query, page: 1, q: data.query }
-            }
-        )
-        // router.query['q'] = data.query
-    };
-
-    const initialValues: valuesFormik = {
-        query: router.query?.q ?? ''
-    };
 
     return (
         <header>
@@ -75,34 +51,10 @@ const Header = () => {
                                 Articles
                             </Link>
                         </div>
-                        <Formik
-                            initialValues={initialValues}
-                            onSubmit={onSubmit}
-                            enableReinitialize={true}
-                        >
-                            {(props) => {
-                                return (
-                                    <Form className='input-group ml-auto d-none d-lg-flex w-25'
-                                    >
-                                        <input name='query' type='text' className='form-control border-0'
-                                               onChange={props.handleChange}
-                                               placeholder='Keyword' value={props.values.query}
-                                        />
-                                        <div className='input-group-append'>
-                                            <button
-                                                className='input-group-text bg-primary text-dark border-0 px-3 h-100'>
-                                                <FontAwesomeIcon icon={faSearch} />
-                                            </button>
-                                        </div>
-                                    </Form>
-                                );
-                            }}
-                        </Formik>
+                        <HeaderSearchComponent/>
                     </div>
                 </nav>
             </div>
         </header>
     );
 };
-
-export default Header;

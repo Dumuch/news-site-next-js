@@ -19,6 +19,7 @@ export interface ArticlePhotoInterface extends ImageInterface {
 }
 
 export interface ArticleCategoryInterface extends CategoryInterface {
+    id: string;
 }
 
 export interface ArticleList extends Sorted, Filtered {
@@ -26,4 +27,10 @@ export interface ArticleList extends Sorted, Filtered {
 
 export interface SearchArticles extends SearchInterface {
     q?: string;
+    categoryId?: string;
+}
+
+export enum ArticleFilterNames {
+    q = 'q',
+    categoryId = 'categoryId'
 }

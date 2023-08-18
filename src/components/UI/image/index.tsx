@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { ImageProps } from '@/components/UI/image/image.types';
-import { FC, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 import { appConfig } from '@/config/app';
 import styles from './image.module.scss';
 import { SkeletonComponent } from '@/components/UI/skeleton';
 
-export const ImageComponent: FC<ImageProps> = ({ src, classNameImage = '', alt = '', width, height }) => {
+export const ImageComponent: FC<ImageProps> = memo(({ src, classNameImage = '', alt = '', width, height }) => {
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const onError = useCallback(() => {
@@ -32,4 +32,4 @@ export const ImageComponent: FC<ImageProps> = ({ src, classNameImage = '', alt =
         </div>
 
     );
-};
+});

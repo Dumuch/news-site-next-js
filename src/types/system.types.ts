@@ -3,6 +3,7 @@ export interface ImageInterface {
 }
 
 export interface CategoryInterface {
+    id: string;
     title: string;
 }
 

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
-import Header from '@/layouts/default/header';
+import { Header } from '@/layouts/default/header';
 import Footer from '@/layouts/default/footer';
 
 interface Props {

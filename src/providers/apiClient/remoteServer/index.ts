@@ -24,6 +24,10 @@ export class RemoteServerApiClient extends AbstractApiClient {
         return client.get(apiRoutes.articles.latest);
     }
 
+    getArticleCategories() {
+        return client.get(apiRoutes.articles.categories);
+    }
+
     getSearchArticles(params: SearchArticles){
         return client.get(apiRoutes.articles.search, {
             params,

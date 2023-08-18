@@ -1,6 +1,7 @@
 import { FormatDateEnum, ImageInterface } from '@/types/system.types';
 import format from 'date-fns/format';
 import { appConfig } from '@/config/app';
+import { useRouter } from 'next/router';
 
 export const getFirstImagePath = (images: ImageInterface[] | null) => {
     if (images && images[0]) {
@@ -23,4 +24,8 @@ export const delimitString = (str: string, limit: number) => {
     } else {
         return str.slice(0, limit) + '...';
     }
+};
+
+export const isActiveLink = (router: typeof useRouter, currentRoute: string) => {
+    return router.route === currentRoute ? 'active' : '';
 };

@@ -31,6 +31,14 @@ module.exports = (app) => {
         }
     });
 
+    route.get('/get-categories', async function (req, res, next) {
+        try {
+            next(await ArticleService.getCategories());
+        } catch (e) {
+            next(e);
+        }
+    });
+
     route.get('/:id', isUuid('id'), async function(req, res, next) {
         try {
             const article = await ArticleService.get(req.params.id);
@@ -42,5 +50,7 @@ module.exports = (app) => {
             next(e);
         }
     });
+
+
 
 };

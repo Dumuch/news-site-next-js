@@ -24,6 +24,7 @@ app.use(
 
 app.use(routes());
 
+
 // App version
 app.use((data, req, res, next) => {
     if (data instanceof Error) {

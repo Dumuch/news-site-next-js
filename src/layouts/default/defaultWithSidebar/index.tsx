@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import Header from '@/layouts/default/header';
+import { Header } from '@/layouts/default/header';
 import Footer from '@/layouts/default/footer';
 import Head from 'next/head';
 import { Sidebar } from '@/layouts/default/defaultWithSidebar/sidebar';

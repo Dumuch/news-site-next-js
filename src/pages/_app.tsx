@@ -7,6 +7,8 @@ import NextNProgress from 'nextjs-progressbar';
 import StoreProviderClient from '@/store/StoreProviderClient';
 import 'primereact/resources/themes/saga-orange/theme.css'
 import '@/assets/styles/globals.scss';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type NextPageWithLayout = NextPage & {
     getLayout?: (page: ReactElement) => ReactNode;

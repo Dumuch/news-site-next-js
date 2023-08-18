@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { getFirstImagePath, getFormatDate } from '@/utils/helpers';
 import { FormatDateEnum } from '@/types/system.types';
 import { ImageComponent } from '@/components/UI/image';
+import { BadgeComponent } from '@/components/UI/badge';
+import { RoutesList } from '@/RoutesList';
 
 export const PreviewCardMin: FC<PreviewCardProps> = ( item) => {
     const memoComponent = useMemo(() => {
@@ -21,9 +23,7 @@ export const PreviewCardMin: FC<PreviewCardProps> = ( item) => {
                 <div className="overlay">
                     <div className={`mb-2 ${styles.wrapperBadge}`}>
                         { item.category && (
-                            <a className='badge badge-primary text-uppercase font-weight-semi-bold p-2 me-2' href=''>
-                                { item.category.title}
-                            </a>
+                            <BadgeComponent className={'me-2'} title={item.category.title} href={`${RoutesList.articles}?categoryId=${item.category.id}`}/>
                         )}
                         <a className="text-white" href="@/components/UI/previewArticle/PreviewArticleMin/index">
                             <small className={styles.date}>{getFormatDate( item.createdAt, FormatDateEnum.monthDayYear)}</small>
