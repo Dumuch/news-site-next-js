@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "eslint-config-prettier": "^9.0.0",
     "sass": "^1.65.1"
