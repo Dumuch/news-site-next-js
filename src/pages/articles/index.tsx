@@ -10,11 +10,15 @@ import { useClientStores } from '@/store';
 import { UseSearch } from '@/utils/useSearch';
 import { FindAndCountAllInterface } from '@/types/system.types';
 
-const Articles: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({ articles, count, categories }) => {
+const Articles: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
+    articles,
+    count,
+    categories,
+}) => {
     const [state, setState] = useState<FindAndCountAllInterface<ArticleInterface[]>>({ rows: articles, count });
     const { articleStore } = useClientStores();
 
-    UseSearch(articleStore, 'getSearch', setState)
+    UseSearch(articleStore, 'getSearch', setState);
 
     return <ArticlesPage articles={state.rows} count={state.count} categories={categories} />;
 };
@@ -31,8 +35,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         props: {
             articles: search?.rows ?? [],
             count: search?.count ?? 0,
-            categories: categories ?? []
-        }
+            categories: categories ?? [],
+        },
     };
 };
 

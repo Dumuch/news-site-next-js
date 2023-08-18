@@ -6,14 +6,18 @@ export const UseIsApplyFilter = (filterNames: string[]) => {
     const [isApplyFilter, setIsApplyFilter] = useState(false);
 
     useEffect(() => {
-        for (const filterName of filterNames) {
-            if (router.query.hasOwnProperty(filterName)) {
-                setIsApplyFilter(true);
-                return;
+        const checkFilters = () => {
+            for (const filterName of filterNames) {
+                if (filterName in router.query) {
+                    return true;
+                }
             }
-        }
+            return false;
+        };
 
-        setIsApplyFilter(false);
-    }, [router.query]);
+        const shouldApplyFilter = checkFilters();
+        setIsApplyFilter(shouldApplyFilter);
+    }, [router.query, filterNames]);
+
     return isApplyFilter;
 };

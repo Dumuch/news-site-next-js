@@ -1,3 +1,5 @@
+import { ImageComponent } from '@/components/UI/image';
+
 export const Sidebar = () => {
     return (
         <>
@@ -7,11 +9,15 @@ export const Sidebar = () => {
                 </div>
                 <div className="bg-white text-center border border-top-0 p-3">
                     <a href="" title={'Advertisement link'}>
-                        <img className="img-fluid" src="/assets/images/article-3.jpg" alt="Advertisement" />
+                        <ImageComponent
+                            classNameImage={'img-fluid'}
+                            src={'/assets/images/article-3.jpg'}
+                            width={300}
+                            alt={'Advertisement'}
+                        />
                     </a>
                 </div>
             </div>
-
         </>
     );
 };

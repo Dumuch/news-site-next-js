@@ -1,5 +1,5 @@
 import { UseServerStores } from '@/store/useServerStores';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { appConfig } from '@/config/app';
 import { NextPageWithLayout } from '@/types/pages.types';

@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { PaginationProps } from '@/components/UI/pagination/pagination.types';
 import { Paginator, PaginatorTemplateOptions } from 'primereact/paginator';
 import 'primereact/paginator/paginator.min.css';
@@ -10,17 +10,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 
-export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, totalRecords }) => {
+export const PaginationComponent = memo<PaginationProps>(({ rowsPerPage, totalRecords }) => {
     const router = useRouter();
 
     const [first, setFirst] = useState((router.query?.page ?? 1 - 1) * rowsPerPage);
     const currentPageRef = useRef(Number(router.query.page ?? 1));
 
+    const memoizedSetFirst = useCallback(
+        (newFirst) => {
+            setFirst(newFirst);
+        },
+        [setFirst],
+    );
+
     useEffect(() => {
         currentPageRef.current = Number(router.query?.page ?? 1);
-        setFirst((currentPageRef.current - 1) * rowsPerPage)
-    }, [router.query.page]);
-
+        memoizedSetFirst((currentPageRef.current - 1) * rowsPerPage);
+    }, [router.query.page, memoizedSetFirst, rowsPerPage]);
 
     const template: PaginatorTemplateOptions = {
         layout: 'PrevPageLink PageLinks NextPageLink',
@@ -35,12 +41,13 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                         <Link
                             href={{
                                 pathname: router.pathname,
-                                query: { ...router.query, page: currentPageRef.current - 1 }
+                                query: { ...router.query, page: currentPageRef.current - 1 },
                             }}
                             className={styles.link}
-                        ><span>
-                            <FontAwesomeIcon icon={faChevronLeft} />
-                        </span>
+                        >
+                            <span>
+                                <FontAwesomeIcon icon={faChevronLeft} />
+                            </span>
                         </Link>
                     )}
                 </div>
@@ -57,7 +64,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                         <Link
                             href={{
                                 pathname: router.pathname,
-                                query: { ...router.query, page: currentPageRef.current + 1 }
+                                query: { ...router.query, page: currentPageRef.current + 1 },
                             }}
                             className={classNames(styles.link, { disabled: options.disabled })}
                         >
@@ -81,7 +88,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                                 <Link
                                     href={{
                                         pathname: router.pathname,
-                                        query: { ...router.query, page: options.page + 1 }
+                                        query: { ...router.query, page: options.page + 1 },
                                     }}
                                     className={styles.link}
                                 >
@@ -98,7 +105,7 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                                 <Link
                                     href={{
                                         pathname: router.pathname,
-                                        query: { ...router.query, page: options.totalPages }
+                                        query: { ...router.query, page: options.totalPages },
                                     }}
                                     className={styles.link}
                                 >
@@ -110,25 +117,25 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
                 );
             }
             return (
-                <div
-                    className={options.className}
-                >
+                <div className={options.className}>
                     <Link
                         href={{
                             pathname: router.pathname,
-                            query: { ...router.query, page: options.page + 1 }
+                            query: { ...router.query, page: options.page + 1 },
                         }}
-                        className={classNames(styles.link, { [styles.active]: options.className.includes('p-highlight') })}
+                        className={classNames(styles.link, {
+                            [styles.active]: options.className.includes('p-highlight'),
+                        })}
                     >
                         {options.page + 1}
                     </Link>
                 </div>
             );
-        }
+        },
     };
 
     return (
-        <nav className='pagination-wrap mb-big'>
+        <nav className="pagination-wrap mb-big">
             <Paginator
                 template={template}
                 rows={rowsPerPage}
@@ -139,3 +146,5 @@ export const PaginationComponent: FC<PaginationProps> = memo(({ rowsPerPage, tot
         </nav>
     );
 });
+
+PaginationComponent.displayName = 'PaginationComponent';

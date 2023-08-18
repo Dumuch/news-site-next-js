@@ -1,6 +1,5 @@
 import { ArticleInterface } from '@/types/articleStore.types';
 import { FC } from 'react';
-import Image from 'next/image';
 import { getFirstImagePath, getFormatDate } from '@/utils/helpers';
 import { FormatDateEnum } from '@/types/system.types';
 import { ImageComponent } from '@/components/UI/image';
@@ -22,7 +21,7 @@ export const ArticlesDetailsPage: FC<props> = ({ article }) => {
                 <article className="bg-white border border-top-0 p-4">
                     <div className="mb-3">
                         {article.category && (
-                            <a className='badge badge-primary text-uppercase font-weight-semi-bold p-2  me-2' href=''>
+                            <a className="badge badge-primary text-uppercase font-weight-semi-bold p-2  me-2" href="">
                                 {article.category.title}
                             </a>
                         )}

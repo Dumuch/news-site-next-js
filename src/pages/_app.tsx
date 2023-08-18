@@ -5,7 +5,7 @@ import { RootStore } from '../store';
 import { removeDevTools } from '@/utils/removeDevTools';
 import NextNProgress from 'nextjs-progressbar';
 import StoreProviderClient from '@/store/StoreProviderClient';
-import 'primereact/resources/themes/saga-orange/theme.css'
+import 'primereact/resources/themes/saga-orange/theme.css';
 import '@/assets/styles/globals.scss';
 
 type NextPageWithLayout = NextPage & {

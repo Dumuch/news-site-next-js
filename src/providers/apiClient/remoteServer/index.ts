@@ -28,7 +28,7 @@ export class RemoteServerApiClient extends AbstractApiClient {
         return client.get(apiRoutes.articles.categories);
     }
 
-    getSearchArticles(params: SearchArticles){
+    getSearchArticles(params: SearchArticles) {
         return client.get(apiRoutes.articles.search, {
             params,
             paramsSerializer: (params) => qs.stringify(params),

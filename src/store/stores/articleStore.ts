@@ -94,7 +94,7 @@ export class ArticleStore {
             const { data } = await api.getLatestArticles();
             return data;
         } catch (e) {
-            throw new Error();
+            throw Error;
         } finally {
             runInAction(() => {
                 this.item.isLoading = false;
@@ -117,12 +117,12 @@ export class ArticleStore {
             });
             return data;
         } catch (e) {
+            throw Error;
         } finally {
             runInAction(() => {
                 this.list.isLoading = false;
             });
         }
-
     }
 
     async getCategories() {
@@ -134,7 +134,7 @@ export class ArticleStore {
             const { data } = await api.getArticleCategories();
             return data;
         } catch (e) {
-            throw new Error();
+            throw Error;
         } finally {
             runInAction(() => {
                 this.item.isLoading = false;

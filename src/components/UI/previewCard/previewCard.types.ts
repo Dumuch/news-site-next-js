@@ -9,4 +9,4 @@ export interface PreviewCardProps {
 
     photos: ImageInterface[] | null;
     category: CategoryInterface | null;
-};
+}
