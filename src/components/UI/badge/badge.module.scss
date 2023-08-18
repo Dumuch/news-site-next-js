@@ -1,3 +1,16 @@
+@import "@/assets/styles/variables";
+@import "@/assets/styles/mixins";
+
+.badge {
+  white-space: break-spaces;
+  @include hover-opacity;
+}
+
+.badgePrimary {
+  color: #212529;
+  background-color: $primary;
+}
+
 .active {
   color: var(--color-light);
   background-color: var(--color-secondary);

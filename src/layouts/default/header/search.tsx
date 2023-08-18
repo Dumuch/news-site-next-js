@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UseIsApplyFilter } from '@/utils/useIsApplyFilter';
 import { ArticleFilterNames } from '@/types/articleStore.types';
 import { UseSearchHooks } from '@/utils/useSearchHooks';
+import styles from '@/layouts/default/header/header.module.scss';
 
 interface valuesFormik {
     query: string;
@@ -28,7 +29,7 @@ export const HeaderSearchComponent = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit} enableReinitialize={true}>
             {(props) => {
                 return (
-                    <Form className="input-group ml-auto d-none d-lg-flex w-25">
+                    <Form className={`input-group ml-auto d-flex ${styles.headerForm}`}>
                         <input
                             name="query"
                             type="text"

@@ -1,0 +1,24 @@
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+
+$primary: #FFCC00;
+$secondary: rgb(30, 32, 36);
+$light: #FFFFFF;
+$dark: #1E2024;
+$grey: #dee2e6;
+
+$font-family-sans-serif: 'Montserrat', sans-serif;
+
+$body-bg: #EDEFF4;
+$body-color: #9A9DA2;
+$border-color: #E4E7ED;
+
+$headings-color: $secondary;
+$enable-responsive-font-sizes: true;
+$enable-rounded: false;
+$grid-gutter-width: 1rem;

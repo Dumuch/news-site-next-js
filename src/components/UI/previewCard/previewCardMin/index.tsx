@@ -20,7 +20,7 @@ export const PreviewCardMin: FC<PreviewCardProps> = (item) => {
                     alt={item.title}
                 />
 
-                <div className="overlay">
+                <div className={styles.overlay}>
                     <div className={`mb-2 ${styles.wrapperBadge}`}>
                         {item.category && (
                             <BadgeComponent

@@ -1,0 +1,40 @@
+@import "@/assets/styles/variables";
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.headerForm {
+  @media(min-width: $breakpoint-lg) {
+    max-width: 25%;
+  }
+}
+
+.navLink {
+  padding: 20px 15px;
+  color: $light;
+  font-weight: 500;
+  text-transform: uppercase;
+  outline: none;
+
+
+  &:hover {
+    color: $dark;
+    background: $primary;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    padding: 8px 15px;
+  }
+}
+
+.navLinkActive {
+  color: $dark;
+  background: $primary;
+}
+

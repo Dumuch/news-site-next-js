@@ -26,6 +26,6 @@ export const delimitString = (str: string, limit: number) => {
     }
 };
 
-export const isActiveLink = (router: typeof useRouter, currentRoute: string) => {
-    return router.route === currentRoute ? 'active' : '';
+export const isActiveLink = (router: typeof useRouter, currentRoute: string): boolean => {
+    return router.route === currentRoute;
 };
