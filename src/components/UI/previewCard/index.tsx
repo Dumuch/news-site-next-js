@@ -27,10 +27,10 @@ export const PreviewCard: FC<PreviewCardProps> = (item) => {
                             {item.category && (
                                 <BadgeComponent className={'me-2'} title={item.category.title} href={`${RoutesList.articles}?categoryId=${item.category.id}`}/>
                             )}
-                            <a className='text-body' href=''>
+                            <i className='text-body'>
                                 <small
                                     className={styles.date}>{getFormatDate(item.createdAt, FormatDateEnum.monthDayYear)}</small>
-                            </a>
+                            </i>
                         </div>
                         <Link
                             href={item.href}

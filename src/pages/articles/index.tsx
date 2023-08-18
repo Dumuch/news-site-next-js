@@ -25,25 +25,15 @@ Articles.getLayout = function getLayout(page: ReactElement) {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const { articleStore } = UseServerStores();
-    try {
-        const search = await articleStore.getSearch(query);
-        const categories = await articleStore.getCategories();
-        return {
-            props: {
-                articles: search?.rows,
-                count: search?.count,
-                categories
-            }
-        };
-    } catch {
-        return {
-            props: {
-                articles: [],
-                count: 0,
-                categories: []
-            }
-        };
-    }
+    const search = await articleStore.getSearch(query);
+    const categories = await articleStore.getCategories();
+    return {
+        props: {
+            articles: search?.rows ?? [],
+            count: search?.count ?? 0,
+            categories: categories ?? []
+        }
+    };
 };
 
 export default Articles;

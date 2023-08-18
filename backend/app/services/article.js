@@ -12,7 +12,7 @@ class ArticleService {
                     limit: 1
                 },
                 {
-                    attributes: ['title'],
+                    attributes: ['id', 'title'],
                     model: category
                 }
             ]
@@ -30,7 +30,7 @@ class ArticleService {
                     limit: 1
                 },
                 {
-                    attributes: ['title'],
+                    attributes: ['id', 'title'],
                     model: category
                 }
             ],
@@ -49,7 +49,7 @@ class ArticleService {
                     limit: 1
                 },
                 {
-                    attributes: ['title'],
+                    attributes: ['id', 'title'],
                     model: category
                 }
             ],

@@ -25,9 +25,9 @@ export const PreviewCardMin: FC<PreviewCardProps> = ( item) => {
                         { item.category && (
                             <BadgeComponent className={'me-2'} title={item.category.title} href={`${RoutesList.articles}?categoryId=${item.category.id}`}/>
                         )}
-                        <a className="text-white" href="@/components/UI/previewArticle/PreviewArticleMin/index">
+                        <i className="text-white">
                             <small className={styles.date}>{getFormatDate( item.createdAt, FormatDateEnum.monthDayYear)}</small>
-                        </a>
+                        </i>
                     </div>
                     <Link
                         href={item.href}
