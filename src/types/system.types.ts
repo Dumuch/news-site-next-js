@@ -32,3 +32,9 @@ export enum FormatDateEnum {
 export interface SearchInterface {
     page?: number;
 }
+
+export enum DeviceSizeEnum {
+    tablet = 'tablet',
+    mobile = 'mobile',
+    desktop = 'desktop',
+}

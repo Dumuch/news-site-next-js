@@ -29,7 +29,7 @@ export const HeaderSearchComponent = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit} enableReinitialize={true}>
             {(props) => {
                 return (
-                    <Form className={`input-group ml-auto d-flex ${styles.headerForm}`}>
+                    <Form className={`input-group ml-auto d-flex mt-2 mt-lg-0 ${styles.headerForm}`}>
                         <input
                             name="query"
                             type="text"

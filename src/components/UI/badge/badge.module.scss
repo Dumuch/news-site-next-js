@@ -3,6 +3,7 @@
 
 .badge {
   white-space: break-spaces;
+  display: inline-block;
   @include hover-opacity;
 }
 

@@ -5,7 +5,10 @@ import styles from '@/components/UI/badge/badge.module.scss';
 
 export const BadgeComponent = memo<BadgeProps>(({ title, href, className = '' }) => {
     return (
-        <Link href={href} className={`${styles.badge} ${styles.badgePrimary} text-uppercase font-weight-semi-bold p-2 ${className}`}>
+        <Link
+            href={href}
+            className={`${styles.badge} ${styles.badgePrimary} text-uppercase font-weight-semi-bold p-1 ${className}`}
+        >
             {title}
         </Link>
     );
