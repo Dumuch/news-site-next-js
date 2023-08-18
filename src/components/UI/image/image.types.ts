@@ -3,5 +3,5 @@ export interface ImageProps {
     classNameImage?: string;
     alt?: string;
     width: number;
-    height?: number;
+    height: number;
 }

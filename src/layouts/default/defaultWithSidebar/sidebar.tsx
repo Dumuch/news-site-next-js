@@ -13,6 +13,7 @@ export const Sidebar = () => {
                             classNameImage={'img-fluid'}
                             src={'/assets/images/article-3.jpg'}
                             width={300}
+                            height={300}
                             alt={'Advertisement'}
                         />
                     </a>
