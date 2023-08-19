@@ -18,7 +18,7 @@ export const HeaderSearchComponent = () => {
     const { clear, submit } = UseSearchHooks(RoutesList.articles);
 
     const initialValues: valuesFormik = {
-        query: router.query?.q ?? '',
+        query: (router.query?.q as string) ?? '',
     };
 
     const onSubmit = (data: valuesFormik) => {

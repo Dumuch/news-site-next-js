@@ -1,4 +1,3 @@
-import { Filtered, Sorted } from '@/models/api';
 import { CategoryInterface, ImageInterface, SearchInterface } from '@/types/system.types';
 
 export interface ArticleInterface {
@@ -21,8 +20,6 @@ export interface ArticlePhotoInterface extends ImageInterface {
 export interface ArticleCategoryInterface extends CategoryInterface {
     id: string;
 }
-
-export interface ArticleList extends Sorted, Filtered {}
 
 export interface SearchArticles extends SearchInterface {
     [ArticleFilterNames.q]?: string;

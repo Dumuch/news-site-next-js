@@ -23,8 +23,8 @@ export const ImageComponent = memo<ImageProps>(({ src, classNameImage = '', alt 
             <Image
                 width={width}
                 height={height}
-                src={isError ? appConfig.noImagePath : src}
-                alt={alt}
+                src={isError ? appConfig.noImagePath : src || appConfig.noImagePath}
+                alt={alt || ''}
                 onError={onError}
                 onLoad={onLoad}
                 className={`${classNameImage} ${styles.lazyImage} ${isLoading ? styles.loading : styles.loaded}`}

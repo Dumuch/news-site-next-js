@@ -1,6 +1,5 @@
 import { NextPageWithLayout } from '@/types/pages.types';
 import { InferGetStaticPropsType } from 'next';
-import { getStaticProps } from 'next/dist/build/webpack/loaders/next-route-loader/templates/pages';
 import { UseServerStores } from '@/store/useServerStores';
 import { ReactElement } from 'react';
 import DefaultLayout from '@/layouts/default';
@@ -10,7 +9,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
     popularArticles,
     latestArticles,
 }) => {
-    return <HomePage popularArticles={popularArticles} latestArticles={latestArticles} />;
+    return <HomePage popularArticles={popularArticles ?? []} latestArticles={latestArticles ?? []} />;
 };
 
 export async function getStaticProps() {

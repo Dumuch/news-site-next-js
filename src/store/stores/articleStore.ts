@@ -45,7 +45,7 @@ export class ArticleStore {
         return this.list.isLoading || this.item.isLoading;
     }
 
-    async get(id: string): Promise<ArticleInterface> {
+    async get(id: string) {
         if (this.isLoading) {
             return;
         }

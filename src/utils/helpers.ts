@@ -1,7 +1,7 @@
 import { FormatDateEnum, ImageInterface } from '@/types/system.types';
 import format from 'date-fns/format';
 import { appConfig } from '@/config/app';
-import { useRouter } from 'next/router';
+import { BaseRouter } from 'next/dist/shared/lib/router/router';
 
 export const getFirstImagePath = (images: ImageInterface[] | null) => {
     if (images && images[0]) {
@@ -10,12 +10,12 @@ export const getFirstImagePath = (images: ImageInterface[] | null) => {
     return appConfig.noImagePath;
 };
 
-export const getFormatDate = (date: string | Date, formatType: FormatDateEnum) => {
+export const getFormatDate = (date: string | Date, formatType: FormatDateEnum): string => {
     let obDate = date;
     if (typeof date === 'string') {
         obDate = new Date(date);
     }
-    return format(obDate, formatType);
+    return format(obDate as Date, formatType);
 };
 
 export const delimitString = (str: string, limit: number) => {
@@ -26,6 +26,6 @@ export const delimitString = (str: string, limit: number) => {
     }
 };
 
-export const isActiveLink = (router: typeof useRouter, currentRoute: string): boolean => {
+export const isActiveLink = (router: BaseRouter, currentRoute: string): boolean => {
     return router.route === currentRoute;
 };

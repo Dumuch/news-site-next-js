@@ -1,28 +1,24 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useCallback } from 'react';
+import { useEffect, useCallback, Dispatch, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
-import { FindAndCountAllInterface } from '@/types/system.types';
 import { RootStoreType } from '@/types/rootStore.types';
+import { FindAndCountAllInterface } from '@/types/system.types';
 
 let startClient = false;
 
-export const UseSearch = (
+export const UseSearch = <T = []>(
     store: RootStoreType,
     method: string,
-    setState: Dispatch<SetStateAction<FindAndCountAllInterface>>,
+    setState: Dispatch<SetStateAction<FindAndCountAllInterface<T>>>,
 ): void => {
-    const prevPageRef = useRef(1);
     const router = useRouter();
 
     const fetchData = useCallback(async () => {
-        if (router.query.page === prevPageRef.current) {
-            router.query.page = 1;
-        } else {
-            prevPageRef.current = router.query.page;
-        }
-
-        const result = await store[method](router.query);
-        if (result) {
-            setState(result);
+        if (method in store) {
+            //@ts-ignore
+            const result = await store[method](router.query);
+            if (result) {
+                setState(result);
+            }
         }
     }, [router.query, store, method, setState]);
 
@@ -31,7 +27,6 @@ export const UseSearch = (
             fetchData();
         } else {
             startClient = true;
-            prevPageRef.current = router.query.page ?? 1;
         }
     }, [fetchData, router.query.page]);
 };

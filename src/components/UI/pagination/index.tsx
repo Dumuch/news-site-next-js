@@ -13,11 +13,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 export const PaginationComponent = memo<PaginationProps>(({ rowsPerPage, totalRecords }) => {
     const router = useRouter();
 
-    const [first, setFirst] = useState((router.query?.page ?? 1 - 1) * rowsPerPage);
+    const [first, setFirst] = useState(((router.query?.page ?? 0) as number) * rowsPerPage);
     const currentPageRef = useRef(Number(router.query.page ?? 1));
 
     const memoizedSetFirst = useCallback(
-        (newFirst) => {
+        (newFirst: number) => {
             setFirst(newFirst);
         },
         [setFirst],

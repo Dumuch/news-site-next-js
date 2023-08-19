@@ -13,7 +13,7 @@ export const PreviewCardMin: FC<PreviewCardProps> = (item) => {
         return (
             <div className={`position-relative overflow-hidden m-2 ${styles.previewCardMin}`}>
                 <ImageComponent
-                    className="img-fluid h-100 object-fit-cover"
+                    classNameImage="img-fluid h-100 object-fit-cover"
                     src={getFirstImagePath(item.photos)}
                     width={500}
                     height={500}

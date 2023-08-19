@@ -4,15 +4,15 @@ import { getFirstImagePath, getFormatDate } from '@/utils/helpers';
 import { FormatDateEnum } from '@/types/system.types';
 import { ImageComponent } from '@/components/UI/image';
 
-interface props {
+interface Props {
     article: ArticleInterface;
 }
-export const ArticlesDetailsPage: FC<props> = ({ article }) => {
+export const ArticlesDetailsPage: FC<Props> = ({ article }) => {
     return (
         <>
             <div className="position-relative mb-3">
                 <ImageComponent
-                    className="img-fluid h-100 w-100 object-fit-cover"
+                    classNameImage="img-fluid h-100 w-100 object-fit-cover"
                     src={getFirstImagePath(article.articlePhotos)}
                     width={500}
                     height={500}

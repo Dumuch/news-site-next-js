@@ -7,14 +7,14 @@ export interface CategoryInterface {
     title: string;
 }
 
-export interface Sorted {
+export interface SortedInterface {
     offset?: number;
     limit?: number;
     sortField?: string | null;
     sortOrder?: number | null;
 }
 
-export interface Filtered {
+export interface FilteredInterface {
     filter?: {
         column: string[];
     };

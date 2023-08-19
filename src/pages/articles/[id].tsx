@@ -3,23 +3,18 @@ import { ReactElement } from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { appConfig } from '@/config/app';
 import { NextPageWithLayout } from '@/types/pages.types';
-import { ArticleInterface } from '@/types/articleStore.types';
 import { RoutesList } from '@/RoutesList';
 import { ArticlesDetailsPage } from '@/components/pages/articlesDetails';
 import DefaultLayoutWithSidebar from '@/layouts/default/defaultWithSidebar';
 
-const Article: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
-    article,
-}: {
-    article: ArticleInterface;
-}) => {
+const Article: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({ article }) => {
     return <ArticlesDetailsPage article={article} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { articleStore } = UseServerStores();
     try {
-        const article = await articleStore.get(params.id);
+        const article = await articleStore.get(params?.id as string);
         return {
             props: {
                 article,
