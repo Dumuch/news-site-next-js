@@ -32,7 +32,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export async function getStaticPaths() {
-    const paths = [{ params: { id: '1' } }];
+    const { articleStore } = UseServerStores();
+    const popularArticles = await articleStore.getPopular();
+
+    const paths = popularArticles?.map((property) => ({
+        params: { id: property.id },
+    }));
 
     return {
         paths,
