@@ -1,7 +1,6 @@
-import { CategoryInterface, ImageInterface, SearchInterface } from '@/types/system.types';
+import { CategoryInterface, ImageInterface, RowInterface, SearchProps } from '@/types/system.types';
 
-export interface ArticleInterface {
-    id: string;
+export interface ArticleInterface extends RowInterface {
     title: string;
     description: string;
     createdAt: string;
@@ -21,7 +20,7 @@ export interface ArticleCategoryInterface extends CategoryInterface {
     id: string;
 }
 
-export interface SearchArticles extends SearchInterface {
+export interface SearchArticles extends SearchProps {
     [ArticleFilterNames.q]?: string;
     [ArticleFilterNames.categoryId]?: string;
 }

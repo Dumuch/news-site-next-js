@@ -29,7 +29,7 @@ export enum FormatDateEnum {
     monthDayYear = 'PP',
 }
 
-export interface SearchInterface {
+export interface SearchProps {
     page?: number;
 }
 
@@ -37,4 +37,12 @@ export enum DeviceSizeEnum {
     tablet = 'tablet',
     mobile = 'mobile',
     desktop = 'desktop',
+}
+
+export interface SearchInterface<T> {
+    setRowsList(rows: T[], count: number): void;
+}
+
+export interface RowInterface {
+    id: string;
 }

@@ -5,6 +5,7 @@ const awsServerlessExpressMiddleware = require('aws-serverless-express/middlewar
 const cors = require('cors');
 const routes = require('./routes');
 const createError = require('http-errors');
+const helmet = require('helmet');
 const app = express();
 
 process.env.TZ = 'Etc/Universal'; // UTC +00:00
@@ -18,12 +19,11 @@ app.use(
         preflightContinue: false,
         optionsSuccessStatus: 204,
         allowedHeaders: ['*'],
-    })
+    }),
 );
 
-
+app.use(helmet());
 app.use(routes());
-
 
 // App version
 app.use((data, req, res, next) => {
