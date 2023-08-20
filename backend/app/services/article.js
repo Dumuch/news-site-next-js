@@ -1,4 +1,6 @@
-const { models: { article, articlePhoto, category } } = require('../models');
+const {
+    models: { article, articlePhoto, category },
+} = require('../models');
 const { Op } = require('sequelize');
 const sequelize = require('../models');
 
@@ -9,16 +11,15 @@ class ArticleService {
                 {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
-                    limit: 1
+                    limit: 1,
                 },
                 {
                     attributes: ['id', 'title'],
-                    model: category
-                }
-            ]
+                    model: category,
+                },
+            ],
         };
         return article.findByPk(articleId, options);
-
     }
 
     static async getPopular() {
@@ -27,15 +28,15 @@ class ArticleService {
                 {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
-                    limit: 1
+                    limit: 1,
                 },
                 {
                     attributes: ['id', 'title'],
-                    model: category
-                }
+                    model: category,
+                },
             ],
             limit: 9,
-            order: sequelize.random()
+            order: sequelize.random(),
         };
         return article.findAll(options);
     }
@@ -46,15 +47,15 @@ class ArticleService {
                 {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
-                    limit: 1
+                    limit: 1,
                 },
                 {
                     attributes: ['id', 'title'],
-                    model: category
-                }
+                    model: category,
+                },
             ],
             limit: 9,
-            order: [['createdAt', 'desc']]
+            order: [['createdAt', 'desc']],
         };
         return article.findAll(options);
     }
@@ -65,20 +66,20 @@ class ArticleService {
                 {
                     attributes: ['id', 'path', 'name'],
                     model: articlePhoto,
-                    limit: 1
+                    limit: 1,
                 },
                 {
                     attributes: ['id', 'title'],
-                    model: category
-                }
+                    model: category,
+                },
             ],
             limit: 12,
             offset: params?.page ? (Number(params.page) - 1) * 12 : 0,
-            distinct: true
+            distinct: true,
         };
 
         const whereParams = {
-            [Op.and]: {}
+            [Op.and]: {},
         };
 
         let order;
@@ -95,7 +96,7 @@ class ArticleService {
 
         if (params?.q) {
             whereParams[Op.and]['title'] = {
-                [Op.iLike]: `%${params.q}%`
+                [Op.iLike]: `%${params.q}%`,
             };
         }
 
@@ -103,23 +104,29 @@ class ArticleService {
             whereParams[Op.and]['categoryId'] = params.categoryId;
         }
 
-        const result = await article.findAndCountAll({ ...options, where: whereParams, order });
-
+        const result = await new Promise((resolve, reject) => {
+            article
+                .findAndCountAll({ ...options, where: whereParams, order })
+                .then((result) => {
+                    setTimeout(() => {
+                        resolve(result);
+                    }, 2500);
+                })
+                .catch((err) => reject(err));
+        });
         return {
             rows: result.rows,
-            count: result.count
+            count: result.count,
         };
     }
 
     static async getCategories() {
         const options = {
             attributes: ['id', 'title'],
-            order: [['title', 'asc']]
+            order: [['title', 'asc']],
         };
         return category.findAll(options);
     }
-
-
 }
 
 module.exports = ArticleService;
