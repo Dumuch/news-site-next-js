@@ -29,7 +29,7 @@ export const ArticlesDetailsPage: FC<Props> = ({ article }) => {
                             {getFormatDate(article.createdAt, FormatDateEnum.monthDayYear)}
                         </a>
                     </div>
-                    <h1 className="mb-3 text-secondary text-uppercase font-weight-bold">{article.title}</h1>
+                    <h1 className="mb-3 text-secondary text-uppercase font-weight-bold text-break">{article.title}</h1>
                     <p>{article.description}</p>
                 </article>
             </div>

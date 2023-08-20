@@ -37,7 +37,7 @@ export const PreviewCardMin: FC<PreviewCardProps> = (item) => {
                     </div>
                     <Link
                         href={item.href}
-                        className={`h6 m-0 text-white text-uppercase font-weight-semi-bold ${styles.title}`}
+                        className={`h6 m-0 text-white text-uppercase text-break font-weight-semi-bold ${styles.title}`}
                     >
                         {item.title}
                     </Link>

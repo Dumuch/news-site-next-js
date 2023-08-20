@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { UseDetectedDevice } from '@/utils/useDetectedDevice';
 import { DeviceSizeEnum } from '@/types/system.types';
+import { SliderCategoriesProps } from '@/components/UI/sliderCategories';
 
 interface props {
     articles: ArticleInterface[];
@@ -16,7 +17,7 @@ interface props {
     categories: ArticleCategoryInterface[];
 }
 
-const SliderCategories = dynamic(() => import('./sliderCategories'), {
+const SliderCategories = dynamic<SliderCategoriesProps>(() => import('@/components/UI/sliderCategories'), {
     ssr: false,
 });
 

@@ -1,53 +1,62 @@
 import { TitleSection } from '@/components/UI/titleSection';
 import { PreviewCardMin } from '@/components/UI/previewCard/previewCardMin';
-import { Carousel } from 'primereact/carousel';
 import { ArticleInterface } from '@/types/articleStore.types';
-import { FC, useMemo } from 'react';
-import { PreviewCardProps } from '@/components/UI/previewCard/previewCard.types';
+import { FC } from 'react';
 import { RoutesList } from '@/RoutesList';
+import { SliderComponent } from '@/components/UI/slider';
 
 interface props {
     articles: ArticleInterface[];
 }
 
-const responsiveOptions = [
-    {
-        breakpoint: '1199px',
-        numVisible: 3,
-        numScroll: 1,
-    },
-    {
-        breakpoint: '991px',
-        numVisible: 2,
-        numScroll: 1,
-    },
-    {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-];
+const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    arrows: true,
+    slidesToShow: 4,
+    responsive: [
+        {
+            breakpoint: 1199,
+            settings: {
+                slidesToShow: 3,
+            },
+        },
+        {
+            breakpoint: 991,
+            settings: {
+                slidesToShow: 2,
+            },
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1,
+            },
+        },
+    ],
+};
 
 export const PopularArticlesSection: FC<props> = ({ articles }) => {
-    const arrayFoCarousel = useMemo(() => {
-        return articles.map((article) => {
-            return {
-                ...article,
-                photos: article.articlePhotos,
-                href: RoutesList.articles + '/' + article.id,
-            } as PreviewCardProps;
-        });
-    }, [articles]);
     return (
         <section>
             <TitleSection title={'Popular Articles'} />
-            <Carousel
-                value={arrayFoCarousel}
-                numVisible={4}
-                responsiveOptions={responsiveOptions}
-                numScroll={1}
-                itemTemplate={PreviewCardMin}
-            />
+            <SliderComponent settings={settings}>
+                {articles.map((article) => {
+                    return (
+                        <PreviewCardMin
+                            key={article.id}
+                            id={article.id}
+                            title={article.title}
+                            description={article.description}
+                            createdAt={article.createdAt}
+                            href={RoutesList.articles + '/' + article.id}
+                            photos={article.articlePhotos}
+                            category={article.category}
+                        />
+                    );
+                })}
+            </SliderComponent>
         </section>
     );
 };

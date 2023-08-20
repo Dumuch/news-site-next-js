@@ -1,15 +1,13 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { FC } from 'react';
-import { ArticleCategoryInterface } from '@/types/articleStore.types';
 import { BadgeComponent } from '@/components/UI/badge';
 import badgeStyles from '@/components/UI/badge/badge.module.scss';
 import { RoutesList } from '@/RoutesList';
 import { useRouter } from 'next/router';
+import { SliderComponent } from '@/components/UI/slider';
+import { CategoryInterface } from '@/types/system.types';
 
-interface props {
-    categories: ArticleCategoryInterface[];
+export interface SliderCategoriesProps {
+    categories: CategoryInterface[];
 }
 
 const settings = {
@@ -19,11 +17,11 @@ const settings = {
     variableWidth: true,
     arrows: false,
 };
-const SliderCategories: FC<props> = ({ categories }) => {
+const SliderCategories: FC<SliderCategoriesProps> = ({ categories }) => {
     const router = useRouter();
     return (
         <div>
-            <Slider {...settings}>
+            <SliderComponent settings={settings}>
                 {categories.map((category) => {
                     const isActive = router.query?.categoryId === category.id;
                     return (
@@ -36,7 +34,7 @@ const SliderCategories: FC<props> = ({ categories }) => {
                         </div>
                     );
                 })}
-            </Slider>
+            </SliderComponent>
         </div>
     );
 };

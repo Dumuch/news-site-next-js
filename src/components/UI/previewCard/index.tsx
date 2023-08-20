@@ -40,12 +40,12 @@ export const PreviewCard: FC<PreviewCardProps> = (item) => {
                         </div>
                         <Link
                             href={item.href}
-                            className={`h4 mb-3 text-secondary text-uppercase font-weight-bold ${styles.title}`}
+                            className={`h4 mb-3 text-secondary text-uppercase text-break font-weight-bold ${styles.title}`}
                         >
                             {item.title}
                         </Link>
 
-                        <p className="m-0">{delimitString(item.description, 200)}</p>
+                        <p className="m-0 text-break">{delimitString(item.description, 200)}</p>
                     </div>
                 </div>
             </div>

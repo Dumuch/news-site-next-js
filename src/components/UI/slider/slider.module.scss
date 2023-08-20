@@ -1,0 +1,9 @@
+.slider {
+  padding-bottom: 40px;
+
+  :global {
+    .slick-dots {
+      bottom: 10px;
+    }
+  }
+}
