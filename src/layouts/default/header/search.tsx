@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UseIsApplyFilter } from '@/utils/useIsApplyFilter';
 import { ArticleFilterNames } from '@/types/articleStore.types';
-import { UseSearchHooks } from '@/utils/useSearchHooks';
+import { UseSearchActions } from '@/utils/useSearchActions';
 import styles from '@/layouts/default/header/header.module.scss';
 
 interface valuesFormik {
@@ -15,7 +15,7 @@ interface valuesFormik {
 export const HeaderSearchComponent = () => {
     const router = useRouter();
     const isApplyFilter = UseIsApplyFilter(Object.keys(ArticleFilterNames));
-    const { clear, submit } = UseSearchHooks(RoutesList.articles);
+    const { clear, submit } = UseSearchActions(RoutesList.articles);
 
     const initialValues: valuesFormik = {
         query: (router.query?.q as string) ?? '',

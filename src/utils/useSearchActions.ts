@@ -1,7 +1,7 @@
 import { RoutesList } from '@/RoutesList';
 import { useRouter } from 'next/router';
 
-export const UseSearchHooks = (searchPath: RoutesList) => {
+export const UseSearchActions = (searchPath: RoutesList) => {
     const router = useRouter();
 
     const submit = (params: object) =>
