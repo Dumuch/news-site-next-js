@@ -95,7 +95,7 @@ class ArticleService {
 
         if (params?.q) {
             whereParams[Op.and]['title'] = {
-                [Op.like]: `%${params.q}%`
+                [Op.iLike]: `%${params.q}%`
             };
         }
 

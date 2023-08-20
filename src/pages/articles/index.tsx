@@ -5,7 +5,7 @@ import DefaultLayout from '@/layouts/default';
 import { GetServerSideProps, InferGetStaticPropsType } from 'next';
 import { UseServerStores } from '@/store/useServerStores';
 import { ArticlesPage } from '@/components/pages/articles';
-import { ArticleInterface } from '@/types/articleStore.types';
+import { ArticleInterface, SearchArticles } from '@/types/articleStore.types';
 import { useClientStores } from '@/store';
 import { UseSearch } from '@/utils/useSearch';
 import { FindAndCountAllInterface } from '@/types/system.types';
@@ -29,7 +29,7 @@ Articles.getLayout = function getLayout(page: ReactElement) {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const { articleStore } = UseServerStores();
-    const search = await articleStore.getSearch(query);
+    const search = await articleStore.getSearch(query as SearchArticles);
     const categories = await articleStore.getCategories();
     return {
         props: {
