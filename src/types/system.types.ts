@@ -42,7 +42,3 @@ export enum DeviceSizeEnum {
 export interface SearchInterface<T> {
     setRowsList(rowsAndCount: FindAndCountAllInterface<T[]>): void;
 }
-
-export interface RowInterface {
-    id: string;
-}

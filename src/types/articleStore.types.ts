@@ -1,6 +1,7 @@
-import { CategoryInterface, ImageInterface, RowInterface, SearchProps } from '@/types/system.types';
+import { CategoryInterface, ImageInterface, SearchProps } from '@/types/system.types';
 
-export interface ArticleInterface extends RowInterface {
+export interface ArticleInterface {
+    id: string;
     title: string;
     description: string;
     createdAt: string;
@@ -26,6 +27,6 @@ export interface SearchArticles extends SearchProps {
 }
 
 export enum ArticleFilterNames {
-    q = 'q',
-    categoryId = 'categoryId',
+    q,
+    categoryId,
 }
