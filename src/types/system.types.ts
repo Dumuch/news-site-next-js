@@ -40,7 +40,7 @@ export enum DeviceSizeEnum {
 }
 
 export interface SearchInterface<T> {
-    setRowsList(rows: T[], count: number): void;
+    setRowsList(rowsAndCount: FindAndCountAllInterface<T[]>): void;
 }
 
 export interface RowInterface {

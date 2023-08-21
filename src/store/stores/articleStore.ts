@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from 'mobx';
 import { RootStore } from './root';
 import { ArticleInterface, SearchArticles } from '@/types/articleStore.types';
 import container from '@/container/container';
-import { SearchInterface } from '@/types/system.types';
+import { FindAndCountAllInterface, SearchInterface } from '@/types/system.types';
 
 const api = container.apiClient;
 
@@ -143,10 +143,10 @@ export class ArticleStore implements SearchInterface<ArticleInterface> {
         }
     }
 
-    setRowsList(rows: ArticleInterface[], count: number) {
+    setRowsList(rowsAndCount: FindAndCountAllInterface<ArticleInterface[]>) {
         runInAction(() => {
-            this.list.items = rows;
-            this.list.count = count;
+            this.list.items = rowsAndCount.rows;
+            this.list.count = rowsAndCount.count;
         });
     }
 }
