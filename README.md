@@ -1,4 +1,4 @@
-## Проект, созданный на Next.js (React.js) с внедрением SSR и SSG. Написан на TypeScript, стейт MobX.
+## Проект, созданный на Next.js (React.js) с внедрением SSR и SSG. Написан на TypeScript, стейт менеджер MobX.
 
 - Для стилей использовался "Bootstrap 5" cовместно с  module CSS (SCSS)
 - В качестве основных компонентов использовалась библиотека "PrimeReact"
