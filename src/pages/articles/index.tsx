@@ -18,7 +18,7 @@ const Articles: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps
     const [state, setState] = useState<FindAndCountAllInterface<ArticleInterface[]>>({ rows: articles, count });
     const { articleStore } = useClientStores();
 
-    UseSearchSSR<ArticleInterface>(articleStore, setState, { rows: articles, count });
+    UseSearchSSR<ArticleInterface>(articleStore, setState, articles, count);
 
     return <ArticlesPage articles={state.rows} count={state.count} categories={categories} />;
 };
