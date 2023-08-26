@@ -3,6 +3,8 @@ import { FC } from 'react';
 import { getFirstImagePath, getFormatDate } from '@/utils/helpers';
 import { FormatDateEnum } from '@/types/system.types';
 import { ImageComponent } from '@/components/UI/image';
+import { BadgeComponent } from '@/components/UI/badge';
+import { RoutesList } from '@/RoutesList';
 
 interface Props {
     article: ArticleInterface;
@@ -21,9 +23,11 @@ export const ArticlesDetailsPage: FC<Props> = ({ article }) => {
                 <article className="bg-white border border-top-0 p-4">
                     <div className="mb-3">
                         {article.category && (
-                            <a className="badge badge-primary text-uppercase font-weight-semi-bold p-2  me-2" href="">
-                                {article.category.title}
-                            </a>
+                            <BadgeComponent
+                                className={'me-2'}
+                                title={article.category.title}
+                                href={`${RoutesList.articles}?categoryId=${article.category.id}`}
+                            />
                         )}
                         <a className="text-body" href="">
                             {getFormatDate(article.createdAt, FormatDateEnum.monthDayYear)}
